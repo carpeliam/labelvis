@@ -4,7 +4,7 @@
  * Dual licensed under the MIT or GPL Version 2 licenses.
  *
  * @author Liam Morley
- * @version 0.0.1
+ * @version 0.0.2
  */
 (function($) {
   $.fn.labelvis = function(options) {
@@ -37,14 +37,20 @@
         }
       };
       
-      var slideLabel = function(elem) {
-        $(elem).prepend('<div class="' + options.slidingClass + '">' + $(elem).data("labelvis") + '</div>');
+      var slideLabelIn = function(elem) {
+        $(elem).before('<div class="' + options.slidingClass + '">' + $(elem).data("labelvis") + '</div>');
       };
+      
+      var slideLabelOut = function(elem) {
+        $(elem).prev('.' + options.slidingClass).remove();
+      }
       
       $(this).focus(function() {
         clearInput(this);
+        slideLabelIn(this);
       }).blur(function() {
         showLabel(this);
+        slideLabelOut(this);
       });
       
       $(this).parents("form").submit(function() {
