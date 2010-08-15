@@ -10,7 +10,8 @@
   $.fn.labelvis = function(options) {
     var defaults = {
       infieldClass: 'labelHighlight',
-      slidingClass: 'sliding'
+      slidingClass: 'sliding',
+      speed: 300
     };
     
     options = $.extend(defaults, options);
@@ -38,19 +39,28 @@
       };
       
       var slideLabelIn = function(elem) {
-        $(elem).before('<div class="' + options.slidingClass + '">' + $(elem).data("labelvis") + '</div>');
+        var div = $('<div class="' + options.slidingClass + '">' + $(elem).data("labelvis") + '</div>').
+          addClass(options.slidingClass).css('position', 'absolute').css('display', 'none').
+          insertBefore(elem);
+        div.css('top', $(elem).offset().top - div.outerHeight()).show("slide", { direction: "down" }, options.speed);
       };
       
       var slideLabelOut = function(elem) {
         $(elem).prev('.' + options.slidingClass).remove();
       }
       
-      $(this).focus(function() {
-        clearInput(this);
-        slideLabelIn(this);
+      var element = this;      
+      $(element).focus(function() {
+        clearInput(element);
+        slideLabelIn(element);
       }).blur(function() {
-        showLabel(this);
-        slideLabelOut(this);
+        showLabel(element);
+        slideLabelOut(element);
+      });
+      
+      $(window).unload(function() {
+        // otherwise hitting 'refresh' will keep the label values
+        clearInput(element);
       });
       
       $(this).parents("form").submit(function() {
