@@ -1,16 +1,16 @@
-/*!
+/**
  * jQuery.labelvis - Display labels and stuff.
  * Copyright 2010, Liam Morley, http://www.carpeliam.com
  * Dual licensed under the MIT or GPL Version 2 licenses.
  *
  * @author Liam Morley
- * @version 0.0.2
+ * @version 0.1.0
  */
 (function($) {
   $.fn.labelvis = function(options) {
     var defaults = {
       infieldClass: 'labelHighlight',
-      slidingClass: 'sliding',
+      slidingClass: 'labelSlide',
       speed: 300
     };
     
