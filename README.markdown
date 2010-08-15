@@ -2,7 +2,7 @@ labelvis.
 =========
 
 Alright, so this is yet another jquery plugin to stick labels _inside_ of form
-elements, a la "labelify":http://www.kryogenix.org/code/browser/labelify/ etc.
+elements, a la [labelify](http://www.kryogenix.org/code/browser/labelify/) etc.
 Slightly different, though.
 
 When you click on an labelvis-enabled textbox, a little box slides up with the
