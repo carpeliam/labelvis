@@ -47,7 +47,7 @@
       
       var slideLabelOut = function(elem) {
         $(elem).prev('.' + options.slidingClass).remove();
-      }
+      };
       
       var element = this;      
       $(element).focus(function() {
