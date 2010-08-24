@@ -4,7 +4,7 @@
  * Dual licensed under the MIT or GPL Version 2 licenses.
  *
  * @author Liam Morley
- * @version 0.1.2
+ * @version 0.1.3
  */
 (function($) {
   $.fn.labelvis = function(options) {
@@ -42,7 +42,8 @@
         var div = $('<div>' + $(elem).data("labelvis") + '</div>').
           addClass(options.slidingClass).css('position', 'absolute').
           appendTo($(elem).parents('form'));
-        div.css('top', $(elem).position().top - div.outerHeight()).css('left', $(elem).position().left).
+        div.css('top', $(elem).position().top - div.outerHeight() + $(elem).offsetParent().scrollTop()).
+          css('left', $(elem).position().left + $(elem).offsetParent().scrollLeft()).
           show("slide", { direction: "down" }, options.speed);
       };
       
