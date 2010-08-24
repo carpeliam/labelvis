@@ -48,5 +48,4 @@ want, otherwise I'm probably happy.
 requirements.
 -------------
 
-You're going to want jquery (not sure what the minimum version is) and jquery-ui
-for the sliding business.
+You're going to want [jquery](http://jquery.com/) (not sure what the minimum version is) and [jquery-ui](http://jqueryui.com/) (specifically Effects Core and Effect "Slide") for the sliding business.
