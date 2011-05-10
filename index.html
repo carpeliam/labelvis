@@ -43,7 +43,27 @@ label {
 </head>
 <body>
 
-<h1>Labelvis Example</h1>
+<p>Alright, so this is yet another jquery plugin to stick labels <em>inside</em> of form
+elements, a la <a href="http://www.kryogenix.org/code/browser/labelify/">labelify</a> etc.
+Slightly different, though.</p> 
+ 
+<p>When you click on an labelvis-enabled textbox, a little box slides up with the
+label so you know what field you're editing. (Ok so usually you don't forget
+these kinds of things but I had a need for this in a project so that's what you
+get.)</p> 
+ 
+<p>This plugin plays nicely with form elements that have already been populated. So
+your input values won't get replaced with the label unless the input value is
+blank. This also means that, if the value gets cleared, the label will be
+displayed.</p> 
+ 
+<p>This plugin is also more friendly regarding forms where you might add textboxes
+and the like dynamically, as it will clear the values of <em>all</em> labelvis-enabled
+textboxes before form submission, including ones that were added after the form
+was added (because who knows, you might have an onsubmit() function for the form
+that would get called before those dynamic elements).</p> 
+
+<h2>Labelvis Example</h2>
 
 <form>
 <label for="name">Name</label>
@@ -51,6 +71,33 @@ label {
 <label for="description">Description</label>
 <textarea id="description"></textarea>
 </form>
+
+<h2>configuration.</h2> 
+ 
+<p>so, you can pass an object literal with some settings if that's what you're
+into. Here are some defaults:</p> 
+ 
+<pre><code>var defaults = {
+  infieldClass: 'labelHighlight',
+  slidingClass: 'labelSlide',
+  speed: 300
+};
+</code></pre> 
+ 
+<p>The first two options are css classes for styling these puppies, because
+presumably you'd like to make these things look good. If you're hurting for
+inspiration or examples, just, er, look at the example. the last option is to
+control how fast the label slides up. I imagine words like "fast" and "slow"
+would also work, while "whoa there nelly" would not.</p> 
+ 
+<h2>in the future.</h2> 
+ 
+<p>In the future, I might add some more customization. But let me know what you
+want, otherwise I'm probably happy.</p> 
+ 
+<h2>requirements.</h2> 
+ 
+<p>You're going to want <a href="http://jquery.com/">jquery</a> (not sure what the minimum version is) and <a href="http://jqueryui.com/">jquery-ui</a> (specifically Effects Core and Effect "Slide") for the sliding business.</p>
 
 <p><a href="http://github.com/carpeliam/labelvis">Labelvis @ Github</a></p>
 
